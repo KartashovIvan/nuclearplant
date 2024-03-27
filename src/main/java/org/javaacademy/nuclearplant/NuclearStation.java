@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.javaacademy.exception.NuclearFuelIsEmptyException;
 import org.javaacademy.exception.ReactorWorkException;
 import org.javaacademy.nuclearplant.department.ReactorDepartment;
+import org.javaacademy.nuclearplant.department.SecurityDepartment;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -14,12 +15,15 @@ import org.springframework.stereotype.Component;
 @Getter
 public class NuclearStation {
     private final ReactorDepartment reactorDepartment;
+    private final SecurityDepartment securityDepartment;
     private long totalEnergyGenerated = 0;
+    private int accidentCountAllTime = 0;
 
     public void start(int year) {
         for (int i = 0; i < year; i++) {
             startYear();
         }
+        log.warn("Количество инцидентов за всю работу станции: " + accidentCountAllTime);
     }
 
     private void startYear() {
@@ -30,11 +34,15 @@ public class NuclearStation {
                 energyProductionInYear += energyProduction;
                 reactorDepartment.stop();
             } catch (ReactorWorkException | NuclearFuelIsEmptyException e) {
-                log.error(e.getMessage());
-                System.out.println("Внимание! Происходят работы на атомной станции! Электричества нет!");
+                log.info("Внимание! Происходят работы на атомной станции! Электричества нет!");
             }
         }
+        log.warn("Количество инцидентов за год: " + securityDepartment.getCountAccidents());
         totalEnergyGenerated += energyProductionInYear;
-        System.out.println("Атомная станция закончила работу. За год Выработано " + energyProductionInYear + " киловатт/часов");
+        securityDepartment.reset();
+    }
+
+    public void incrementAccident(int count) {
+        accidentCountAllTime += count;
     }
 }

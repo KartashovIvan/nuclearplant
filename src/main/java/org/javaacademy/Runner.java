@@ -12,6 +12,5 @@ public class Runner {
 		ApplicationContext context = SpringApplication.run(Runner.class, args);
 		NuclearStation station = context.getBean(NuclearStation.class);
 		station.start(3);
-		System.out.println(station.getTotalEnergyGenerated());
 	}
 }
