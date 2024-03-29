@@ -1,0 +1,4 @@
+country:
+  name: France
+  cost_one_kilowatt: 0.5
+  currency: евро
