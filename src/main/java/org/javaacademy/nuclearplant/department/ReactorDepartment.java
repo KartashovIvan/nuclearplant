@@ -1,12 +1,16 @@
 package org.javaacademy.nuclearplant.department;
 
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import org.javaacademy.exception.NuclearFuelIsEmptyException;
 import org.javaacademy.exception.ReactorWorkException;
 import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
+@Setter
+@Getter
 public class ReactorDepartment {
     private boolean isWork = false;
     private final long energyProductionPerDay = 10_000_000;
