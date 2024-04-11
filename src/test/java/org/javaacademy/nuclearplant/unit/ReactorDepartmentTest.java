@@ -1,8 +1,10 @@
-package org.javaacademy.nuclearplant.department;
+package org.javaacademy.nuclearplant.unit;
 
 import lombok.SneakyThrows;
 import org.javaacademy.exception.NuclearFuelIsEmptyException;
 import org.javaacademy.exception.ReactorWorkException;
+import org.javaacademy.nuclearplant.department.ReactorDepartment;
+import org.javaacademy.nuclearplant.department.SecurityDepartment;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
