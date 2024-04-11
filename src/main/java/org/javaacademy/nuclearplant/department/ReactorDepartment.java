@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 @Getter
 public class ReactorDepartment {
     private boolean isWork = false;
-    private final long energyProductionPerDay = 10_000_000;
+    private static final long ENERGY_PRODUCTION_PER_DAY = 10_000_000;
     private int reactorStartCounter = 1;
     private final SecurityDepartment securityDepartment;
 
@@ -24,7 +24,7 @@ public class ReactorDepartment {
         }
         checkFuel();
         isWork = true;
-        return energyProductionPerDay;
+        return ENERGY_PRODUCTION_PER_DAY;
     }
 
     public void stop() throws ReactorWorkException {

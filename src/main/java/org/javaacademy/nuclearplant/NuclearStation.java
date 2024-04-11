@@ -37,7 +37,7 @@ public class NuclearStation {
                 energyProductionInYear += energyProduction;
                 reactorDepartment.stop();
             } catch (ReactorWorkException | NuclearFuelIsEmptyException e) {
-                log.info("Внимание! Происходят работы на атомной станции! Электричества нет!");
+                log.warn("Внимание! Происходят работы на атомной станции! Электричества нет!");
             }
         }
         log.warn("Количество инцидентов за год: {}", securityDepartment.getCountAccidents());
